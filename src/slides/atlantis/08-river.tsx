@@ -4,8 +4,8 @@ export default function River() {
   return (
     <section className="atl">
       <h2 className="atl-h2">The lost river.</h2>
-      <div className="atl-two" style={{ marginTop: '1.5vh' }}>
-        <div className="atl-svg-frame" style={{ height: '60vh' }}>
+      <div className="atl-two">
+        <div className="atl-svg-frame" style={{ height: '72vh' }}>
           <TamanrassettMap />
         </div>
 
@@ -15,8 +15,9 @@ export default function River() {
               fontFamily: 'var(--atl-head)',
               fontWeight: 700,
               color: 'var(--atl-slate)',
-              fontSize: 'clamp(1.4rem, 2.3vw, 1.9rem)',
+              fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)',
               margin: 0,
+              letterSpacing: '-0.01em',
             }}>
               The Tamanrasett
             </p>
@@ -24,8 +25,9 @@ export default function River() {
               fontFamily: 'var(--atl-body)',
               fontStyle: 'italic',
               color: 'var(--atl-charcoal)',
-              fontSize: '0.9rem',
-              margin: '0.3rem 0 0',
+              fontSize: '1.05rem',
+              margin: '0.5rem 0 0',
+              lineHeight: 1.5,
             }}>
               Buried palaeo-river, confirmed by Japanese PALSAR radar imagery.
               <br/>Skonieczny et al., Nature Communications, 2015.
@@ -46,14 +48,15 @@ export default function River() {
             fontFamily: 'var(--atl-head)',
             fontStyle: 'italic',
             color: 'var(--atl-slate)',
-            fontSize: '1.05rem',
+            fontSize: 'clamp(1.15rem, 1.5vw, 1.4rem)',
             margin: 0,
+            lineHeight: 1.4,
           }}>
             Atlanteans didn't need to live on the coast to sail to one.
           </p>
         </div>
       </div>
-      <p className="atl-slideline" style={{ position: 'absolute', bottom: '3vh', left: 0, right: 0 }}>
+      <p className="atl-slideline" style={{ position: 'absolute', bottom: '3vh', left: '6vw', right: '6vw' }}>
         Where is the water? Buried under the Sahara.
       </p>
     </section>

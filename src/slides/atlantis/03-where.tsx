@@ -4,7 +4,7 @@ export default function Where() {
   return (
     <section className="atl">
       <h2 className="atl-h2">Plato told us where to look.</h2>
-      <div className="atl-two" style={{ marginTop: '2vh' }}>
+      <div className="atl-two">
         <div className="atl-quote-card">
           <p className="citation">Timaeus, 24e–25a</p>
           <p className="quote">
@@ -13,11 +13,11 @@ export default function Where() {
             than Libya and Asia together…”
           </p>
         </div>
-        <div className="atl-svg-frame" style={{ height: '60vh' }}>
+        <div className="atl-svg-frame" style={{ height: '70vh' }}>
           <LocatorMap />
         </div>
       </div>
-      <p className="atl-slideline" style={{ position: 'absolute', bottom: '3vh', left: 0, right: 0 }}>
+      <p className="atl-slideline" style={{ position: 'absolute', bottom: '3vh', left: '6vw', right: '6vw' }}>
         Beyond the Pillars. Atlantic-facing. Africa is not a reach — it is in the text.
       </p>
     </section>

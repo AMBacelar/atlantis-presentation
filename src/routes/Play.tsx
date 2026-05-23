@@ -63,7 +63,28 @@ export default function Play() {
         </section>
       )}
 
-      {q.mode === 'question' && question && (
+      {q.mode === 'question' && question && quiz?.kind === 'rating' && (
+        <section className="play-card">
+          <h1 className="play-prompt">{question.prompt}</h1>
+          <div className="play-stars">
+            {question.options.map((_opt, i) => (
+              <button
+                key={i}
+                className={`play-star ${picked !== null && i <= picked ? 'on' : ''}`}
+                onClick={() => pick(i)}
+                disabled={picked !== null}
+                aria-label={`${i + 1} stars`}
+              >★</button>
+            ))}
+          </div>
+          {picked !== null && !submitError && (
+            <p className="play-status">Thanks — your {picked + 1}★ rating is locked in.</p>
+          )}
+          {submitError && <p className="play-error">{submitError}</p>}
+        </section>
+      )}
+
+      {q.mode === 'question' && question && quiz?.kind !== 'rating' && (
         <section className="play-card">
           <h1 className="play-prompt">{question.prompt}</h1>
           <div className="play-options">
@@ -86,7 +107,24 @@ export default function Play() {
         </section>
       )}
 
-      {q.mode === 'reveal' && question && (
+      {q.mode === 'reveal' && question && quiz?.kind === 'rating' && (
+        <section className="play-card">
+          <h1 className="play-prompt">{question.prompt}</h1>
+          <div className="play-stars">
+            {question.options.map((_opt, i) => (
+              <span
+                key={i}
+                className={`play-star revealed ${picked !== null && i <= picked ? 'on' : ''}`}
+              >★</span>
+            ))}
+          </div>
+          <p className="play-status">
+            {picked !== null ? `You gave ${picked + 1}★. Thanks!` : 'No rating submitted.'}
+          </p>
+        </section>
+      )}
+
+      {q.mode === 'reveal' && question && quiz?.kind !== 'rating' && (
         <section className="play-card">
           <h1 className="play-prompt">{question.prompt}</h1>
           <div className="play-options">

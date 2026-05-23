@@ -54,8 +54,6 @@ export default function Catch() {
         </div>
       </div>
 
-      <div /* row spacer */ />
-
       <div className="atl-catch__verdict">
         <h3>Pick option 1.</h3>
         <p>

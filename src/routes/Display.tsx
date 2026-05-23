@@ -111,6 +111,64 @@ function QuizDisplay({
   const showCounts = q.mode === 'reveal'
   const maxCount = Math.max(1, ...q.tally)
 
+  if (quiz?.kind === 'rating') {
+    const weighted = q.tally.reduce((acc, n, i) => acc + n * (i + 1), 0)
+    const avg = totalAnswers > 0 ? weighted / totalAnswers : 0
+    return (
+      <main className="display display-rating">
+        <div className="rating-header">
+          <span className="quiz-label">{quiz?.title}</span>
+          <span className="quiz-status">
+            {totalAnswers} {totalAnswers === 1 ? 'rating' : 'ratings'}
+            {' '}· {players} {players === 1 ? 'player' : 'players'} in
+          </span>
+        </div>
+
+        <h1 className="rating-prompt">{question.prompt}</h1>
+
+        {showCounts ? (
+          <>
+            <div className="rating-average">
+              <div className="rating-average-num">{avg.toFixed(1)}</div>
+              <div className="rating-average-stars" aria-hidden>
+                {[1,2,3,4,5].map((n) => (
+                  <span key={n} className={`rating-avg-star ${n <= Math.round(avg) ? 'on' : ''}`}>★</span>
+                ))}
+              </div>
+              <div className="rating-average-label">average of {totalAnswers}</div>
+            </div>
+            <div className="rating-histogram">
+              {[4,3,2,1,0].map((i) => {
+                const count = q.tally[i] ?? 0
+                const pct = (count / maxCount) * 100
+                return (
+                  <div key={i} className="rating-row">
+                    <span className="rating-row-label">
+                      {Array.from({length: i + 1}).map((_, k) => <span key={k} className="rating-row-star">★</span>)}
+                    </span>
+                    <div className="rating-bar-track">
+                      <div className="rating-bar-fill" style={{ width: `${pct}%` }} />
+                    </div>
+                    <span className="rating-row-count">{count}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </>
+        ) : (
+          <div className="rating-waiting">
+            <div className="rating-waiting-stars" aria-hidden>
+              {[1,2,3,4,5].map((n) => <span key={n} className="rating-avg-star">★</span>)}
+            </div>
+            <p className="rating-waiting-text">Pick 1–5 stars on your phone.</p>
+          </div>
+        )}
+
+        <JoinOverlay joinUrl={joinUrl} playerCount={players} mode={qrMode} />
+      </main>
+    )
+  }
+
   return (
     <main className="display display-quiz">
       <div className="quiz-header">

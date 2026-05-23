@@ -7,7 +7,7 @@
 type RawProps = { className?: string }
 
 function Raw({ html, className }: { html: string; className?: string }) {
-  return <div className={className ?? 'atl-svg-frame'} dangerouslySetInnerHTML={{ __html: html }} />
+  return <div className={className ?? 'atl-svg-inner'} dangerouslySetInnerHTML={{ __html: html }} style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} />
 }
 
 // Plato-style concentric Atlantis rings (alternating land / water)

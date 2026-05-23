@@ -3,15 +3,15 @@ import { PlatoRings } from './svgs'
 export default function Blueprint() {
   return (
     <section className="atl">
-      <h2 className="atl-h2">Plato's blueprint</h2>
-      <div className="atl-two" style={{ marginTop: '1.5vh' }}>
-        <div>
-          <div className="atl-svg-frame" style={{ height: '52vh' }}>
+      <h2 className="atl-h2">Plato's blueprint.</h2>
+      <div className="atl-two">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+          <div className="atl-svg-frame" style={{ height: '62vh', width: '100%' }}>
             <PlatoRings />
           </div>
           <p className="atl-caption">Plato's Atlantis, drawn from Critias</p>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', justifyContent: 'center' }}>
           <div className="atl-quote-card">
             <p className="citation">Critias, 113d–114d</p>
             <p className="quote">
@@ -44,7 +44,7 @@ export default function Blueprint() {
           </table>
         </div>
       </div>
-      <p className="atl-slideline" style={{ position: 'absolute', bottom: '3vh', left: 0, right: 0 }}>
+      <p className="atl-slideline" style={{ position: 'absolute', bottom: '3vh', left: '6vw', right: '6vw' }}>
         He wasn't writing fantasy. He was describing a satellite image before satellites existed.
       </p>
     </section>

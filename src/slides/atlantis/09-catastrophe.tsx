@@ -3,7 +3,7 @@ import { ClimateTimeline } from './svgs'
 export default function Catastrophe() {
   return (
     <section className="atl atl-cat">
-      <h2 className="atl-h1" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', color: 'var(--atl-gold)' }}>
+      <h2 className="atl-h2">
         The catastrophe.
       </h2>
 

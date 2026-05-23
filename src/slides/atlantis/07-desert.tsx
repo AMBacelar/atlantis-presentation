@@ -1,15 +1,17 @@
 export default function Desert() {
   return (
-    <section className="atl">
-      <h2 className="atl-h2" style={{ fontStyle: 'italic' }}>“But it's a desert.”</h2>
-      <p style={{
-        fontFamily: 'var(--atl-head)',
-        color: 'var(--atl-rust)',
-        fontSize: 'clamp(1.2rem, 2vw, 1.6rem)',
-        margin: '0.4rem 0 1.6rem',
-      }}>
-        Yes. Now.
-      </p>
+    <section className="atl" style={{ paddingBottom: '9vh' }}>
+      <div>
+        <h2 className="atl-h2" style={{ fontStyle: 'italic' }}>“But it's a desert.”</h2>
+        <p style={{
+          fontFamily: 'var(--atl-head)',
+          color: 'var(--atl-rust)',
+          fontSize: 'clamp(1.4rem, 2.2vw, 1.9rem)',
+          margin: '0.6rem 0 0',
+        }}>
+          Yes. Now.
+        </p>
+      </div>
 
       <div className="atl-thenow">
         <div className="atl-thenow__card then">
@@ -36,7 +38,7 @@ export default function Desert() {
         </div>
       </div>
 
-      <p className="atl-slideline" style={{ position: 'absolute', bottom: '3vh', left: 0, right: 0 }}>
+      <p className="atl-slideline" style={{ position: 'absolute', bottom: '3vh', left: '6vw', right: '6vw' }}>
         The Sahara is not what it used to be.
       </p>
     </section>
