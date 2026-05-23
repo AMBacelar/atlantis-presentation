@@ -13,11 +13,19 @@ export default function Catch() {
       </div>
 
       <div className="atl-catch__row">
-        <div className="atl-photo-frame atl-catch__viz">
-          <img
-            src="/images/richat-topo.jpg"
-            alt="Topographic relief of the Richat Structure showing it sits in a basin lower than the surrounding rim, surrounded by dendritic drainage channels"
-          />
+        <div className="atl-catch__vizstack">
+          <div className="atl-photo-frame atl-catch__viz">
+            <img
+              src="/images/richat-3d.jpg"
+              alt="3D perspective render of the Richat Structure showing the concentric rings sit in a clear bowl below the surrounding rim plateau"
+            />
+          </div>
+          <div className="atl-photo-frame atl-catch__viz">
+            <img
+              src="/images/richat-topo.jpg"
+              alt="Topographic relief of the Richat Structure showing it sits in a basin lower than the surrounding rim, surrounded by dendritic drainage channels"
+            />
+          </div>
         </div>
 
         <div className="atl-catch__answers">

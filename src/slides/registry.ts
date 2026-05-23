@@ -163,7 +163,8 @@ export const slides: Slide[] = [
       '(b) the whole region is carved by water — dendritic drainage channels, dry wadis, the Sebkha Akerdi salt flat. Sahara was wet during the African Humid Period. ' +
       'Then walk the 4 readings and pick option 1: inland capital + drowned coastal empire.',
     details:
-      'Topographic image: pinkish/tan = high (rim plateau ~500 m), blue/green = low (basin floor ~340 m). ' +
+      '3D perspective render: shows the rings sitting INSIDE the bowl — the surrounding plateau is visibly higher than the structure. ' +
+      'Topographic image below: pinkish/tan = high (rim plateau ~500 m), blue/green = low (basin floor ~340 m). ' +
       'Dark dendritic patterns around the structure are eroded drainage networks — classic signature of past surface water at scale. ' +
       'Sebkha Akerdi (visible east of the structure on the floodmap views) is an evaporated salt lake — water *was* there. ' +
       '\n\nFour defensible readings:\n' +

@@ -846,8 +846,9 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 }
 .atl-catch__sub--em { color: var(--atl-rust); margin-top: 0.2rem; font-weight: 600; }
 .atl-catch__row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2vw; align-items: center; }
+.atl-catch__vizstack { display: flex; flex-direction: column; gap: 0.8rem; }
 .atl-catch__row .atl-svg-frame,
-.atl-catch__row .atl-catch__viz { height: 48vh; max-height: 460px; }
+.atl-catch__row .atl-catch__viz { height: 22vh; max-height: 220px; }
 .atl-catch__viz { width: 100%; }
 .atl-catch__answers { font-family: var(--atl-body); color: var(--atl-charcoal); line-height: 1.45; font-size: 0.92rem; }
 .atl-catch__points-head {
