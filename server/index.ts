@@ -68,6 +68,8 @@ function tallyFromAnswers(optionCount: number): number[] {
 
 const app = new Hono()
 
+app.get('/health', (c) => c.json({ ok: true, uptime: process.uptime() }))
+
 app.get('/api/state', (c) => c.json(snapshot()))
 
 app.get('/api/events', (c) =>
