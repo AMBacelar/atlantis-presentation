@@ -758,6 +758,33 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 .atl-reveal__svg { height: 70vh; max-height: 650px; }
 .atl-reveal__svg.atl-photo-frame { height: 70vh; max-height: 650px; }
 .atl-reveal__meta { display: flex; flex-direction: column; gap: 0.4rem; }
+
+/* Reveal staged crossfade — quote, image, meta blocks stack and swap. */
+.atl-reveal__quotebox,
+.atl-reveal__meta { position: relative; min-height: 7rem; }
+.atl-reveal__quoteblock,
+.atl-reveal__metablock {
+  position: absolute; inset: 0;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  pointer-events: none;
+}
+.atl-reveal__quoteblock.shown,
+.atl-reveal__metablock.shown {
+  opacity: 1; transform: translateY(0);
+  pointer-events: auto;
+}
+.atl-reveal__metablock { display: flex; flex-direction: column; gap: 0.4rem; }
+.atl-reveal__stack { position: relative; }
+.atl-reveal__layer {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+.atl-reveal__layer.shown { opacity: 1; }
+
 .atl-reveal__eyebrow { font-family: var(--atl-head); letter-spacing: 0.18em; color: var(--atl-gold); font-size: 0.85rem; font-weight: 700; }
 .atl-reveal__name { font-family: var(--atl-head); font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.6rem); color: var(--atl-cream); }
 .atl-reveal__loc { font-family: var(--atl-body); color: #B8C5D6; font-size: 0.85rem; line-height: 1.6; }
@@ -810,13 +837,32 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* Slide 10 — Hardest catch */
 .atl-catch { display: grid; grid-template-rows: auto auto 1fr auto; height: 100%; gap: 1vh; }
-.atl-catch__row { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2vw; align-items: center; }
-.atl-catch__row .atl-svg-frame { height: 35vh; }
-.atl-catch__answers { font-family: var(--atl-body); color: var(--atl-charcoal); line-height: 1.45; }
-.atl-catch__answers ol { margin: 0; padding-left: 0; list-style: none; }
-.atl-catch__answers li { margin-bottom: 0.6rem; }
+.atl-catch__sub {
+  font-family: var(--atl-body);
+  color: var(--atl-charcoal);
+  font-style: italic;
+  font-size: 0.95rem;
+  margin: 0.4rem 0 0;
+}
+.atl-catch__sub--em { color: var(--atl-rust); margin-top: 0.2rem; font-weight: 600; }
+.atl-catch__row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2vw; align-items: center; }
+.atl-catch__row .atl-svg-frame,
+.atl-catch__row .atl-catch__viz { height: 48vh; max-height: 460px; }
+.atl-catch__viz { width: 100%; }
+.atl-catch__answers { font-family: var(--atl-body); color: var(--atl-charcoal); line-height: 1.45; font-size: 0.92rem; }
+.atl-catch__points-head {
+  font-family: var(--atl-head); font-weight: 700;
+  color: var(--atl-slate);
+  font-size: 0.95rem;
+  margin: 0.6rem 0 0.15rem;
+}
+.atl-catch__points-head--rust { color: var(--atl-rust); margin-top: 0.9rem; }
+.atl-catch__points-body { margin: 0 0 0.2rem; }
+.atl-catch__answers ol { margin: 0.3rem 0 0; padding-left: 0; list-style: none; }
+.atl-catch__answers li { margin-bottom: 0.45rem; }
 .atl-catch__answers li b { color: var(--atl-rust); margin-right: 0.3rem; }
-.atl-catch__answers em { color: var(--atl-charcoal); opacity: 0.8; font-size: 0.85em; display: block; padding-left: 1.3rem; }
+.atl-catch__answers li em { color: var(--atl-charcoal); opacity: 0.8; font-size: 0.85em; display: block; padding-left: 1.3rem; }
+.atl-catch__points-body em { font-style: italic; color: var(--atl-rust); }
 .atl-catch__verdict {
   background: var(--atl-slate); color: var(--atl-cream);
   padding: 1rem 1.3rem; border-radius: 8px;
