@@ -1,5 +1,3 @@
-import { RichatSatellite } from './svgs'
-
 export default function Reveal() {
   return (
     <section className="atl atl-reveal">
@@ -10,8 +8,11 @@ export default function Reveal() {
         <p className="atl-reveal__cite">— ESA / NASA Earth Observatory</p>
       </div>
 
-      <div className="atl-svg-frame atl-reveal__svg">
-        <RichatSatellite />
+      <div className="atl-photo-frame atl-reveal__svg">
+        <img
+          src="/images/richat-satellite.jpg"
+          alt="Satellite image of the Richat Structure (Guelb er Richât), Mauritania"
+        />
       </div>
 
       <div className="atl-reveal__meta">

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppState, type QrMode } from '../hooks/useAppState'
 import { slides } from '../slides/registry'
 import { quizzes, findQuiz } from '../quizzes/registry'
+import { OBJECTIONS } from '../slides/atlantis/objections-data'
 import { checkAuth, setPosition, startQuestion, revealQuestion, endQuiz, setQrMode } from '../lib/api'
 
 export default function Present() {
@@ -67,6 +68,7 @@ export default function Present() {
         prev={prev}
       />
       <QrToggle current={state.qrMode} />
+      <ObjectionsPanel />
       <QuizSection
         state={state}
         selectedQuizId={selectedQuizId}
@@ -74,6 +76,25 @@ export default function Present() {
       />
       <PlayersStrip playerCount={state.players.length} players={state.players} />
     </main>
+  )
+}
+
+function ObjectionsPanel() {
+  return (
+    <details className="present-objections">
+      <summary>
+        <span className="obj-summary-label">Objections — have these ready</span>
+        <span className="obj-summary-count">{OBJECTIONS.length}</span>
+      </summary>
+      <ul className="obj-list">
+        {OBJECTIONS.map((o) => (
+          <li key={o.move}>
+            <p className="obj-move">{o.move}</p>
+            <p className="obj-reply">{o.reply}</p>
+          </li>
+        ))}
+      </ul>
+    </details>
   )
 }
 

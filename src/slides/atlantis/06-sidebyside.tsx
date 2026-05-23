@@ -1,4 +1,4 @@
-import { PlatoRings, RichatSatellite } from './svgs'
+import { PlatoRings } from './svgs'
 
 export default function SideBySide() {
   return (
@@ -16,8 +16,11 @@ export default function SideBySide() {
         <div className="atl-sbs__equals">=</div>
 
         <div className="atl-sbs__col">
-          <div className="atl-svg-frame">
-            <RichatSatellite />
+          <div className="atl-photo-frame">
+            <img
+              src="/images/richat-satellite.jpg"
+              alt="Satellite image of the Richat Structure (Guelb er Richât), Mauritania"
+            />
           </div>
           <p className="atl-sbs__label">THE RICHAT STRUCTURE</p>
           <p className="atl-sbs__caption">~23 km inner zone · concentric · central core</p>

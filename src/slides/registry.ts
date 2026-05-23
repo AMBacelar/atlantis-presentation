@@ -9,7 +9,6 @@ import Desert from './atlantis/07-desert'
 import River from './atlantis/08-river'
 import Catastrophe from './atlantis/09-catastrophe'
 import Catch from './atlantis/10-catch'
-import Objections from './atlantis/11-objections'
 import Closer from './atlantis/12-closer'
 
 export type SlideTheme = 'dark' | 'light'
@@ -162,22 +161,6 @@ export const slides: Slide[] = [
       '4. The Tamanrasett dried up; the fertile plain became uninhabitable\n\n' +
       'Pick option 1 if pressed — it needs no translation gymnastics, just more of Plato’s own text.',
     Component: Catch,
-  },
-  {
-    id: 'objections',
-    title: 'Objections · Have These Ready',
-    theme: 'light',
-    notes:
-      'Don’t read every row. Let people pick. Be ready to deliver the deflections in character — they’re punchlines.',
-    details:
-      'Top deflections:\n' +
-      '• Natural geology: "Of course — Poseidon used the terrain available."\n' +
-      '• No archaeology: "Yet. The Sahara is the world’s most aggressive filing cabinet."\n' +
-      '• 100 Myr old: "Plato says Poseidon shaped a pre-existing hill."\n' +
-      '• Sank in Atlantic: "Mauritania is on the Atlantic. The Tamanrasett ran to the Atlantic."\n' +
-      '• Allegory: "Mainstream scholars also failed to ask me before forming their conclusion."\n' +
-      '• Dimensions off: "Transmission error, unit conversion, Egyptian-to-Greek retelling — pick your weapon."',
-    Component: Objections,
   },
   {
     id: 'closer',

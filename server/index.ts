@@ -233,6 +233,7 @@ app.post('/api/quiz/end', async (c) => {
 
 if (IS_PROD) {
   app.use('/assets/*', serveStatic({ root: './dist' }))
+  app.use('/images/*', serveStatic({ root: './dist' }))
   app.get('*', serveStatic({ path: './dist/index.html' }))
 }
 
