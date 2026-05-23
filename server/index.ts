@@ -18,11 +18,14 @@ type QuizMode =
   | { mode: 'question'; quizId: string; questionIndex: number; tally: number[] }
   | { mode: 'reveal'; quizId: string; questionIndex: number; tally: number[]; correctIndex: number | null }
 
+type QrMode = 'hidden' | 'corner' | 'fullscreen'
+
 type PublicState = {
   slide: number
   stage: number
   players: Player[]
   quiz: QuizMode
+  qrMode: QrMode
 }
 
 // Internal state: keeps per-player answers (not broadcast) so we can prevent
@@ -31,6 +34,7 @@ const players = new Map<string, Player>()
 let slide = 0
 let stage = 0
 let quiz: QuizMode = { mode: 'idle' }
+let qrMode: QrMode = 'corner'
 let answers = new Map<string, number>() // playerId → optionIndex for current question
 
 function snapshot(): PublicState {
@@ -39,6 +43,7 @@ function snapshot(): PublicState {
     stage,
     players: [...players.values()],
     quiz,
+    qrMode,
   }
 }
 
@@ -205,6 +210,17 @@ app.post('/api/quiz/reveal', async (c) => {
   }
   broadcast()
   return c.json({ ok: true })
+})
+
+app.post('/api/qr', async (c) => {
+  if (!isAuthed(c)) return c.json({ error: 'unauthorized' }, 401)
+  const body = await c.req.json().catch(() => null) as { mode?: string } | null
+  if (!body || (body.mode !== 'hidden' && body.mode !== 'corner' && body.mode !== 'fullscreen')) {
+    return c.json({ error: 'bad mode' }, 400)
+  }
+  qrMode = body.mode
+  broadcast()
+  return c.json({ ok: true, qrMode })
 })
 
 app.post('/api/quiz/end', async (c) => {

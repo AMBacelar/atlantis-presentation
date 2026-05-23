@@ -194,6 +194,42 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 .display-join-url { font-size: 0.95rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 .display-join-count { color: var(--muted); font-size: 0.85rem; }
 
+/* ---- Join overlay: fullscreen ---- */
+.display-join-full {
+  position: absolute;
+  inset: 0;
+  background: #0a0c10;
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 10;
+  padding: 2rem;
+}
+.display-join-full-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+.display-join-full-qr {
+  background: #14171c;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+.display-join-full-url {
+  font-size: 2.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.02em;
+}
+.display-join-full-count {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
 /* ---- Quiz on display ---- */
 .display-quiz {
   display: flex;
@@ -259,6 +295,43 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
   z-index: 0;
 }
 .quiz-opt.correct .quiz-opt-bar { background: rgba(91, 214, 128, 0.18); }
+
+/* ---- Presenter QR toggle ---- */
+.present-qr {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.present-qr h2 {
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.qr-toggle {
+  display: flex;
+  gap: 0.4rem;
+}
+.qr-toggle-btn {
+  flex: 1;
+  padding: 0.7rem 0.5rem;
+  font-size: 0.95rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.qr-toggle-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0a0c10;
+  font-weight: 600;
+}
 
 /* ---- Presenter quiz panel ---- */
 .present-pill {

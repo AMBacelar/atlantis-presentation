@@ -1,5 +1,5 @@
 import { QRCodeSVG } from 'qrcode.react'
-import { useAppState } from '../hooks/useAppState'
+import { useAppState, type QrMode } from '../hooks/useAppState'
 import { slides } from '../slides/registry'
 import { findQuiz } from '../quizzes/registry'
 
@@ -8,7 +8,14 @@ export default function Display() {
   const joinUrl = `${window.location.origin}/join`
 
   if (state.quiz.mode !== 'idle') {
-    return <QuizDisplay quiz={state.quiz} players={state.players.length} joinUrl={joinUrl} />
+    return (
+      <QuizDisplay
+        quiz={state.quiz}
+        players={state.players.length}
+        joinUrl={joinUrl}
+        qrMode={state.qrMode}
+      />
+    )
   }
 
   const slide = slides[state.slide] ?? slides[0]
@@ -23,9 +30,23 @@ export default function Display() {
       <div className="display-progress">
         {state.slide + 1} / {slides.length}
       </div>
-      <JoinChip joinUrl={joinUrl} playerCount={state.players.length} />
+      <JoinOverlay joinUrl={joinUrl} playerCount={state.players.length} mode={state.qrMode} />
     </main>
   )
+}
+
+function JoinOverlay({
+  joinUrl,
+  playerCount,
+  mode,
+}: {
+  joinUrl: string
+  playerCount: number
+  mode: QrMode
+}) {
+  if (mode === 'hidden') return null
+  if (mode === 'fullscreen') return <JoinFullscreen joinUrl={joinUrl} playerCount={playerCount} />
+  return <JoinChip joinUrl={joinUrl} playerCount={playerCount} />
 }
 
 function JoinChip({ joinUrl, playerCount }: { joinUrl: string; playerCount: number }) {
@@ -45,6 +66,21 @@ function JoinChip({ joinUrl, playerCount }: { joinUrl: string; playerCount: numb
   )
 }
 
+function JoinFullscreen({ joinUrl, playerCount }: { joinUrl: string; playerCount: number }) {
+  return (
+    <div className="display-join-full">
+      <div className="display-join-full-label">Join</div>
+      <div className="display-join-full-qr">
+        <QRCodeSVG value={joinUrl} size={520} bgColor="#14171c" fgColor="#e8eaed" includeMargin={false} />
+      </div>
+      <div className="display-join-full-url">{joinUrl.replace(/^https?:\/\//, '')}</div>
+      <div className="display-join-full-count">
+        {playerCount} {playerCount === 1 ? 'player' : 'players'} joined
+      </div>
+    </div>
+  )
+}
+
 type QuizModeQuestion = Extract<ReturnType<typeof useAppState>['quiz'], { mode: 'question' }>
 type QuizModeReveal = Extract<ReturnType<typeof useAppState>['quiz'], { mode: 'reveal' }>
 
@@ -52,10 +88,12 @@ function QuizDisplay({
   quiz: q,
   players,
   joinUrl,
+  qrMode,
 }: {
   quiz: QuizModeQuestion | QuizModeReveal
   players: number
   joinUrl: string
+  qrMode: QrMode
 }) {
   const quiz = findQuiz(q.quizId)
   const question = quiz?.questions[q.questionIndex]
@@ -65,7 +103,7 @@ function QuizDisplay({
     return (
       <main className="display">
         <p>Quiz question not found.</p>
-        <JoinChip joinUrl={joinUrl} playerCount={players} />
+        <JoinOverlay joinUrl={joinUrl} playerCount={players} mode={qrMode} />
       </main>
     )
   }
@@ -104,7 +142,7 @@ function QuizDisplay({
         })}
       </div>
 
-      <JoinChip joinUrl={joinUrl} playerCount={players} />
+      <JoinOverlay joinUrl={joinUrl} playerCount={players} mode={qrMode} />
     </main>
   )
 }

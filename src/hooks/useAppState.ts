@@ -7,11 +7,14 @@ export type QuizMode =
   | { mode: 'question'; quizId: string; questionIndex: number; tally: number[] }
   | { mode: 'reveal'; quizId: string; questionIndex: number; tally: number[]; correctIndex: number | null }
 
+export type QrMode = 'hidden' | 'corner' | 'fullscreen'
+
 export type AppState = {
   slide: number
   stage: number
   players: Player[]
   quiz: QuizMode
+  qrMode: QrMode
 }
 
 const initialState: AppState = {
@@ -19,6 +22,7 @@ const initialState: AppState = {
   stage: 0,
   players: [],
   quiz: { mode: 'idle' },
+  qrMode: 'corner',
 }
 
 export function useAppState(): AppState {

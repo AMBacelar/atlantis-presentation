@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppState } from '../hooks/useAppState'
+import { useAppState, type QrMode } from '../hooks/useAppState'
 import { slides } from '../slides/registry'
 import { quizzes, findQuiz } from '../quizzes/registry'
-import { checkAuth, setPosition, startQuestion, revealQuestion, endQuiz } from '../lib/api'
+import { checkAuth, setPosition, startQuestion, revealQuestion, endQuiz, setQrMode } from '../lib/api'
 
 export default function Present() {
   const navigate = useNavigate()
@@ -66,6 +66,7 @@ export default function Present() {
         next={next}
         prev={prev}
       />
+      <QrToggle current={state.qrMode} />
       <QuizSection
         state={state}
         selectedQuizId={selectedQuizId}
@@ -73,6 +74,31 @@ export default function Present() {
       />
       <PlayersStrip playerCount={state.players.length} players={state.players} />
     </main>
+  )
+}
+
+function QrToggle({ current }: { current: QrMode }) {
+  const options: { mode: QrMode; label: string }[] = [
+    { mode: 'hidden', label: 'Hide' },
+    { mode: 'corner', label: 'Corner' },
+    { mode: 'fullscreen', label: 'Full' },
+  ]
+  return (
+    <section className="present-qr">
+      <h2>QR code</h2>
+      <div className="qr-toggle">
+        {options.map((o) => (
+          <button
+            key={o.mode}
+            className={current === o.mode ? 'qr-toggle-btn active' : 'qr-toggle-btn'}
+            onClick={() => void setQrMode(o.mode)}
+            aria-pressed={current === o.mode}
+          >
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </section>
   )
 }
 

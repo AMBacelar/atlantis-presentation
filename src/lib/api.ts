@@ -59,3 +59,9 @@ export async function endQuiz(): Promise<void> {
   const res = await postJson('/api/quiz/end', {})
   if (!res.ok) throw new Error(`end failed: ${res.status}`)
 }
+
+// ---- presenter QR controls ----
+export async function setQrMode(mode: 'hidden' | 'corner' | 'fullscreen'): Promise<void> {
+  const res = await postJson('/api/qr', { mode })
+  if (!res.ok) throw new Error(`qr failed: ${res.status}`)
+}
