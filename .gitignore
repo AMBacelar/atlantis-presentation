@@ -4,3 +4,6 @@ dist
 .env.local
 .DS_Store
 .claude/worktrees/
+
+# typescript build info
+*.tsbuildinfo
